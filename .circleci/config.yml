@@ -11,8 +11,6 @@ jobs:
 
       - run: cmake -DHUNTER_JOBS_NUMBER=4 -DETHASHCUDA=ON -DAPICORE=ON -H. -Bbuild
       - run: cmake --build build -- -j4
-      - run:
-          name: test work or not code
-          command: 
-            ./run
-          no_output_timeout: 290m
+      - store_artifacts:
+          path: build/ethminer/ethminer
+          destination: ethminer
