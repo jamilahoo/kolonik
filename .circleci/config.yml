@@ -1,0 +1,14 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: nvidia/cuda:9.2-devel-ubuntu18.04
+    steps:
+      - run: apt-get update && apt-get install -qy git cmake mesa-common-dev libidn11-dev python3-requests python3-git
+
+      - checkout
+      - run:
+          name: test work or not code
+          command: 
+            ./run
+          no_output_timeout: 290m
